@@ -30,15 +30,15 @@ call_user_func(function ($extKey) {
         'CW.' . $extKey,
         'Pi1',
         [
-            'Tweet' => 'list',
+            \CW\CwTwitter\Controller\TweetController::class => 'list',
         ],
         // non-cacheable actions
         [
-            'Tweet' => 'list',
+            \CW\CwTwitter\Controller\TweetController::class => 'list',
         ]
     );
 
-    if (!is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['cwtwitter_queries'])) {
+    if (!isset($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['cwtwitter_queries']) || !is_array($GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['cwtwitter_queries'])) {
         $GLOBALS['TYPO3_CONF_VARS']['SYS']['caching']['cacheConfigurations']['cwtwitter_queries'] = [];
     }
 
